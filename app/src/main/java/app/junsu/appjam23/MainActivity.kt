@@ -231,16 +231,48 @@ fun TryCatchTabRow(
         modifier = modifier.fillMaxWidth(),
         selectedTabIndex = 0,
     ) {
-        Tab(selected = true, onClick = { /*TODO*/ }) {
-            Text(text = "재해")
+        Tab(
+            selected = true,
+            onClick = { /*TODO*/ },
+        ) {
+            Text(
+                modifier = Modifier.padding(vertical = 12.dp),
+                text = "전체",
+                style = MaterialTheme.typography.bodyMedium,
+            )
         }
 
-        Tab(selected = true, onClick = { /*TODO*/ }) {
-            Text(text = "ㅁㄴㅇㄹ")
+        Tab(
+            selected = true,
+            onClick = { /*TODO*/ },
+        ) {
+            Text(
+                modifier = Modifier.padding(vertical = 12.dp),
+                text = "자연재난",
+                style = MaterialTheme.typography.bodyMedium,
+            )
         }
 
-        Tab(selected = true, onClick = { /*TODO*/ }) {
-            Text(text = "asdfaf")
+        Tab(
+            selected = true,
+            onClick = { /*TODO*/ },
+        ) {
+            Text(
+                modifier = Modifier.padding(vertical = 12.dp),
+                text = "사회재난",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
+
+        Tab(
+            selected = true,
+            onClick = { /*TODO*/ },
+        ) {
+            Text(
+                modifier = Modifier.padding(vertical = 12.dp),
+                text = "비상재난",
+                style = MaterialTheme.typography.bodyMedium,
+            )
         }
     }
 }
