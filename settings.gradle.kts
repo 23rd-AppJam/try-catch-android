@@ -13,6 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "23rd AppJam"
+rootProject.name = "Appjam 23"
 include(":app")
- 
