@@ -48,7 +48,7 @@ fun TodoList(
         ) {
             Text(
                 modifier = Modifier.weight(1f),
-                text = "오늘 할 일",
+                text = "오늘의 다짐",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
             )
