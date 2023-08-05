@@ -34,7 +34,7 @@ fun WeekCalendar(
             .padding(20.dp),
     ) {
         Text(
-            text = "2023년 8월 1일",
+            text = "2023년 8월 6일",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
         )
@@ -47,7 +47,7 @@ fun WeekCalendar(
                 WeekCalendarDate(
                     modifier = Modifier.weight(1f),
                     dayOfWeek = dayOfWeek,
-                    date = index + 7,
+                    date = if (index == 0) 31 else index,
                 )
             }
         }
