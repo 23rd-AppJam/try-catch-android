@@ -21,6 +21,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -82,12 +84,6 @@ fun TryCatchApp() {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
-        topBar = {
-            TryCatchTopBar(
-                modifier = Modifier.fillMaxWidth(),
-                onNavigationIconClick = navController::navigateUp,
-            )
-        },
         bottomBar = {
             TryCatchBottomBar(
                 modifier = Modifier.fillMaxWidth(),
@@ -99,6 +95,7 @@ fun TryCatchApp() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(
+                    top = paddingValues.calculateTopPadding(),
                     start = paddingValues.calculateStartPadding(LayoutDirection.Ltr),
                     end = paddingValues.calculateEndPadding(LayoutDirection.Ltr),
                 ),
@@ -106,7 +103,10 @@ fun TryCatchApp() {
             startDestination = MainSections.HOME.route,
         ) {
             composable(MainSections.HOME.route) {
-                Home()
+                Home(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = navController,
+                )
             }
             composable(MainSections.ANNOUNCEMENT.route) {
                 Announcement()
@@ -255,4 +255,26 @@ fun TryCatchTopBar(
             Spacer(modifier = Modifier.width(8.dp))
         }
     )
+}
+
+@Composable
+fun TryCatchTabRow(
+    modifier: Modifier = Modifier,
+) {
+    TabRow(
+        modifier = modifier.fillMaxWidth(),
+        selectedTabIndex = 0,
+    ) {
+        Tab(selected = true, onClick = { /*TODO*/ }) {
+            Text(text = "재해")
+        }
+
+        Tab(selected = true, onClick = { /*TODO*/ }) {
+            Text(text = "ㅁㄴㅇㄹ")
+        }
+
+        Tab(selected = true, onClick = { /*TODO*/ }) {
+            Text(text = "asdfaf")
+        }
+    }
 }
