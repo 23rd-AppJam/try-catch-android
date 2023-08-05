@@ -2,6 +2,7 @@ package app.junsu.appjam23.ui
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -89,6 +90,7 @@ private fun WeekCalendarDate(
 @Composable
 fun MonthCalendar(
     modifier: Modifier = Modifier,
+    onShowCalendar: () -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -196,32 +198,44 @@ fun MonthCalendar(
                 type = null,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 1,
                 type = CalendarIconType.SAD,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 2,
                 type = CalendarIconType.GOOD,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 3,
                 type = CalendarIconType.CRY,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 4,
                 type = CalendarIconType.GOOD,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 5,
                 type = CalendarIconType.UPSET,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 6,
                 type = CalendarIconType.UPSET,
             )
@@ -230,37 +244,51 @@ fun MonthCalendar(
             modifier = Modifier.fillMaxWidth(),
         ) {
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 7,
                 type = CalendarIconType.CRY,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 8,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 9,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 10,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 11,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 12,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 13,
                 type = CalendarIconType.BLANK,
             )
@@ -269,37 +297,51 @@ fun MonthCalendar(
             modifier = Modifier.fillMaxWidth(),
         ) {
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 14,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 15,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 16,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 17,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 18,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 19,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 20,
                 type = CalendarIconType.BLANK,
             )
@@ -308,37 +350,51 @@ fun MonthCalendar(
             modifier = Modifier.fillMaxWidth(),
         ) {
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 21,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 22,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 23,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 24,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 25,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 26,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 27,
                 type = CalendarIconType.BLANK,
             )
@@ -347,22 +403,30 @@ fun MonthCalendar(
             modifier = Modifier.fillMaxWidth(),
         ) {
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 28,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 29,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 30,
                 type = CalendarIconType.BLANK,
             )
             MonthlyCalendarItem(
-                modifier = Modifier.weight(1f),
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable(onClick = onShowCalendar),
                 date = 31,
                 type = CalendarIconType.BLANK,
             )
@@ -446,5 +510,6 @@ private fun WeekCalendarPreview() {
 private fun MonthCalendarPreview() {
     MonthCalendar(
         modifier = Modifier.padding(horizontal = 16.dp),
+        onShowCalendar = {},
     )
 }
