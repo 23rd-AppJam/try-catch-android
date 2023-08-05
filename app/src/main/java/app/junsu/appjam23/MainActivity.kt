@@ -4,10 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,8 +22,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -71,16 +75,22 @@ fun TryCatchApp() {
     val navController = rememberNavController()
     val bottomNavController = rememberNavController()
 
-    Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-        TryCatchBottomBar(
-            modifier = Modifier.fillMaxWidth(),
-            navController = bottomNavController,
-        )
-    }) { paddingValues ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            TryCatchBottomBar(
+                modifier = Modifier.fillMaxWidth(),
+                navController = bottomNavController,
+            )
+        },
+    ) { paddingValues ->
         NavHost(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues),
+                .padding(
+                    start = paddingValues.calculateStartPadding(LayoutDirection.Ltr),
+                    end = paddingValues.calculateEndPadding(LayoutDirection.Ltr),
+                ),
             navController = bottomNavController,
             startDestination = MainSections.HOME.route,
         ) {
@@ -108,8 +118,17 @@ fun TryCatchBottomBar(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val selectedBottomBarItem = navBackStackEntry?.destination?.route
     BottomAppBar(
-        modifier = modifier.fillMaxWidth(),
-        containerColor = Color.Transparent,
+        modifier = modifier
+            .fillMaxWidth()
+            .graphicsLayer {
+                clip = true
+                shape = RoundedCornerShape(
+                    topStart = 8.dp,
+                    topEnd = 8.dp,
+                )
+                shadowElevation = 20f
+            },
+        containerColor = MaterialTheme.colorScheme.background,
     ) {
         MainSections.values().forEach { section ->
             val selected = section.route == selectedBottomBarItem
