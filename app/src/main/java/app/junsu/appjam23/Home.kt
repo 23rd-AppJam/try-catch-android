@@ -18,9 +18,10 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -32,11 +33,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.junsu.appjam23.ui.TodoList
-import app.junsu.appjam23.ui.WeekCalendar
 import app.junsu.appjam23.ui.theme.Gray200
-import app.junsu.appjam23.ui.theme.Gray500
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
@@ -102,15 +102,15 @@ fun Home(
                     contentDescription = null,
                 )
             }
-           /* WeekCalendar(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = 20.dp,
-                        end = 20.dp,
-                        top = 25.dp,
-                    ),
-            )*/
+            /* WeekCalendar(
+                 modifier = Modifier
+                     .fillMaxWidth()
+                     .padding(
+                         start = 20.dp,
+                         end = 20.dp,
+                         top = 25.dp,
+                     ),
+             )*/
             TodoList(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -148,19 +148,20 @@ enum class Face(
 private fun HomeTopBar() {
     TopAppBar(
         title = {
-            Image(
-                painter = painterResource(id = R.drawable.ic_appjam_logo),
-                contentDescription = null,
+            Text(
+                text = "너도",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
             )
         },
         colors = TopAppBarDefaults.smallTopAppBarColors(
             containerColor = Color.Transparent,
         ),
         actions = {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_bell),
-                contentDescription = null,
-                tint = Gray500,
+            Text(
+                text = "1000P",
+                fontWeight = FontWeight.Bold,
             )
             Spacer(
                 modifier = Modifier.width(16.dp),
