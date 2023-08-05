@@ -47,7 +47,7 @@ fun WeekCalendar(
                 WeekCalendarDate(
                     modifier = Modifier.weight(1f),
                     dayOfWeek = dayOfWeek,
-                    date = index + 6,
+                    date = index + 7,
                 )
             }
         }
@@ -72,7 +72,7 @@ private fun WeekCalendarDate(
         )
 
         Text(
-            text = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.KOREA),
+            text = date.toString(),
             style = MaterialTheme.typography.bodyMedium,
         )
     }
