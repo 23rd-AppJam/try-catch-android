@@ -147,6 +147,7 @@ private fun AppJam23App() {
             composable(MainSections.HOME.route) {
                 Home(
                     onTodoDetailClick = onShowModal,
+                    navigateToMy = { bottomNavController.navigateTo(MainSections.MY_APPJAM.route) },
                 )
             }
 
