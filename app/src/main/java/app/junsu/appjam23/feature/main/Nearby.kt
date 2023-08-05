@@ -147,7 +147,7 @@ private fun Missing(
         modifier = modifier.fillMaxSize(),
     ) {
         HumanInformationItem(
-            imageRes = R.drawable.ic_home_default,
+            imageRes = R.drawable.img_dummy_man,
             information = HumanInformation(
                 name = "박준수",
                 gender = HumanInformation.Gender.MALE,
@@ -157,7 +157,7 @@ private fun Missing(
             missingPlace = "대덕SW마이스터고등학교",
         )
         HumanInformationItem(
-            imageRes = R.drawable.ic_home_default,
+            imageRes = R.drawable.img_dummy_man,
             information = HumanInformation(
                 name = "박준수",
                 gender = HumanInformation.Gender.MALE,
@@ -167,7 +167,7 @@ private fun Missing(
             missingPlace = "대덕SW마이스터고등학교",
         )
         HumanInformationItem(
-            imageRes = R.drawable.ic_home_default,
+            imageRes = R.drawable.img_dummy_man,
             information = HumanInformation(
                 name = "박준수",
                 gender = HumanInformation.Gender.MALE,
