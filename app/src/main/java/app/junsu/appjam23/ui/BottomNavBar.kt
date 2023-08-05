@@ -18,7 +18,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import app.junsu.appjam23.MainSections
 import app.junsu.appjam23.ui.theme.Gray500
-import app.junsu.appjam23.ui.theme.Green500
 import app.junsu.appjam23.util.navigateTo
 
 @Composable
@@ -41,18 +40,12 @@ fun BottomNavBar(
                 icon = {
                     Icon(
                         modifier = Modifier.size(24.dp),
-                        painter = painterResource(
-                            if (selected) {
-                                section.selectedRes
-                            } else {
-                                section.defaultRes
-                            },
-                        ),
+                        painter = painterResource(section.defaultRes),
                         contentDescription = null,
                         tint = if (selected) {
-                            Gray500
+                            Color.Black
                         } else {
-                            Color.Unspecified
+                            Gray500
                         },
                     )
                 },
@@ -64,7 +57,7 @@ fun BottomNavBar(
                             MainSections.MY_APPJAM -> "My 앱잼"
                         },
                         color = if (selected) {
-                            Green500
+                            Color.Black
                         } else {
                             Gray500
                         },

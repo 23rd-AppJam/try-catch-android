@@ -73,21 +73,17 @@ private fun AppJam23App() {
 enum class MainSections(
     val route: String,
     @DrawableRes val defaultRes: Int,
-    @DrawableRes val selectedRes: Int,
 ) {
     CALENDAR(
         route = "calendar",
         defaultRes = R.drawable.ic_calendar_default,
-        selectedRes = R.drawable.ic_calendar_selected,
     ),
     HOME(
         route = "home",
         defaultRes = R.drawable.ic_home_default,
-        selectedRes = R.drawable.ic_home_selected,
     ),
     MY_APPJAM(
         route = "myAppJam",
-        defaultRes = R.drawable.ic_my_default,
-        selectedRes = R.drawable.ic_my_selected,
+        defaultRes = R.drawable.ic_my,
     ),
 }
