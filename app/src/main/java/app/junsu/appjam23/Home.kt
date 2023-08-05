@@ -27,7 +27,6 @@ import app.junsu.appjam23.ui.WeekCalendar
 import app.junsu.appjam23.ui.theme.Gray200
 import app.junsu.appjam23.ui.theme.Gray500
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Home(
     modifier: Modifier = Modifier,
@@ -36,9 +35,7 @@ fun Home(
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
-            HomeTopBar(
-                modifier = Modifier.fillMaxWidth(),
-            )
+            HomeTopBar()
         },
         containerColor = Gray200,
     ) { padValues ->
@@ -88,9 +85,7 @@ fun Home(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HomeTopBar(
-    modifier: Modifier = Modifier,
-) {
+private fun HomeTopBar() {
     TopAppBar(
         title = {
             Image(
