@@ -8,14 +8,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import app.junsu.appjam23.ui.WeekCalendar
 import app.junsu.appjam23.ui.theme.Appjam23Theme
+import app.junsu.appjam23.ui.theme.Gray200
 import app.junsu.appjam23.ui.theme.Green500
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Gray200,
                 ) {
                     AppJam23App()
                 }
@@ -55,9 +57,20 @@ private fun AppJam23App() {
                     )
                     .background(Green500),
             )
-            Box(
-                modifier = Modifier.weight(0.6f),
-            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(0.6f),
+            ) {
+                WeekCalendar(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 20.dp,
+                            vertical = 25.dp,
+                        ),
+                )
+            }
         }
     }
 }
