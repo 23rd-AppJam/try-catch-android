@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -62,16 +63,19 @@ fun TodoList(
             modifier = Modifier.fillMaxWidth(),
             title = "식물에 물 주기",
             onMoreIconClick = onTodoDetailClick,
+            point = 10,
         )
         TodoItem(
             modifier = Modifier.fillMaxWidth(),
             title = "걷기",
             onMoreIconClick = onTodoDetailClick,
+            point = 10,
         )
         TodoItem(
             modifier = Modifier.fillMaxWidth(),
             title = "식물에 물 주기",
             onMoreIconClick = onTodoDetailClick,
+            point = 10,
         )
     }
 }
@@ -81,6 +85,7 @@ private fun TodoItem(
     modifier: Modifier = Modifier,
     title: String,
     onMoreIconClick: (String) -> Unit,
+    point: Int,
 ) {
     var checked by remember { mutableStateOf(false) }
 
@@ -102,11 +107,22 @@ private fun TodoItem(
                 Gray500
             },
         )
-        Text(
+        Row(
             modifier = Modifier.weight(1f),
-            text = title,
-            style = MaterialTheme.typography.bodyLarge,
-        )
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyLarge,
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                modifier = Modifier.weight(1f),
+                text = "${point}P",
+                style = MaterialTheme.typography.bodyLarge,
+                color = Gray500,
+            )
+        }
         Icon(
             modifier = Modifier
                 .size(24.dp)

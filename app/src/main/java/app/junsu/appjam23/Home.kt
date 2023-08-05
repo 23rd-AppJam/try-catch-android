@@ -102,7 +102,7 @@ fun Home(
                     contentDescription = null,
                 )
             }
-            WeekCalendar(
+           /* WeekCalendar(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
@@ -110,7 +110,7 @@ fun Home(
                         end = 20.dp,
                         top = 25.dp,
                     ),
-            )
+            )*/
             TodoList(
                 modifier = Modifier
                     .fillMaxWidth()
