@@ -1,5 +1,6 @@
 package app.junsu.appjam23
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import app.junsu.appjam23.ui.MonthCalendar
 import app.junsu.appjam23.ui.theme.Gray200
 
 @Composable
@@ -30,10 +32,12 @@ fun Calendar(
     ) { padValues ->
         Column(
             modifier = modifier
+                .background(MaterialTheme.colorScheme.surface)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(padValues),
         ) {
+            MonthCalendar()
         }
     }
 }
