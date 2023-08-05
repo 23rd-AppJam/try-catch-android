@@ -10,6 +10,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
@@ -18,6 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import app.junsu.appjam23.ui.BottomNavBar
 import app.junsu.appjam23.ui.theme.Appjam23Theme
 import app.junsu.appjam23.ui.theme.Gray200
+import app.junsu.appjam23.util.navigateTo
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,10 @@ class MainActivity : ComponentActivity() {
 private fun AppJam23App() {
     val bottomNavController = rememberNavController()
 
+    LaunchedEffect(Unit) {
+        bottomNavController.navigateTo(MainSections.HOME.route)
+    }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
@@ -60,7 +66,7 @@ private fun AppJam23App() {
             }
 
             composable(MainSections.HOME.route) {
-
+                Home()
             }
 
             composable(MainSections.MY_APPJAM.route) {
@@ -76,11 +82,11 @@ enum class MainSections(
 ) {
     CALENDAR(
         route = "calendar",
-        defaultRes = R.drawable.ic_calendar_default,
+        defaultRes = R.drawable.ic_calendar_selected,
     ),
     HOME(
         route = "home",
-        defaultRes = R.drawable.ic_home_default,
+        defaultRes = R.drawable.ic_home_selected,
     ),
     MY_APPJAM(
         route = "myAppJam",
