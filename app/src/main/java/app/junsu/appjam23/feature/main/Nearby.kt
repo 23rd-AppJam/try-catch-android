@@ -25,6 +25,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import app.junsu.appjam23.R
+import app.junsu.appjam23.ui.HumanInformation
+import app.junsu.appjam23.ui.HumanInformationItem
+import app.junsu.appjam23.ui.HumanInformationType
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,10 +59,14 @@ fun Nearby(
                 startDestination = NearbySections.MISSING.route,
             ) {
                 composable(NearbySections.MISSING.route) {
-
+                    Missing(
+                        modifier = Modifier.fillMaxSize(),
+                    )
                 }
                 composable(NearbySections.CRIME.route) {
-
+                    Crime(
+                        modifier = Modifier.fillMaxSize(),
+                    )
                 }
             }
         }
@@ -129,4 +137,51 @@ fun NearbyTabRow(
             }
         }
     }
+}
+
+@Composable
+private fun Missing(
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+    ) {
+        HumanInformationItem(
+            imageRes = R.drawable.ic_home_default,
+            information = HumanInformation(
+                name = "박준수",
+                gender = HumanInformation.Gender.MALE,
+                age = 18,
+            ),
+            type = HumanInformationType.MISSING,
+            missingPlace = "대덕SW마이스터고등학교",
+        )
+        HumanInformationItem(
+            imageRes = R.drawable.ic_home_default,
+            information = HumanInformation(
+                name = "박준수",
+                gender = HumanInformation.Gender.MALE,
+                age = 18,
+            ),
+            type = HumanInformationType.MISSING,
+            missingPlace = "대덕SW마이스터고등학교",
+        )
+        HumanInformationItem(
+            imageRes = R.drawable.ic_home_default,
+            information = HumanInformation(
+                name = "박준수",
+                gender = HumanInformation.Gender.MALE,
+                age = 18,
+            ),
+            type = HumanInformationType.MISSING,
+            missingPlace = "대덕SW마이스터고등학교",
+        )
+    }
+}
+
+@Composable
+private fun Crime(
+    modifier: Modifier = Modifier,
+) {
+
 }
