@@ -4,27 +4,20 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import app.junsu.appjam23.ui.BottomNavBar
 import app.junsu.appjam23.ui.theme.Appjam23Theme
 import app.junsu.appjam23.ui.theme.Gray200
-import app.junsu.appjam23.ui.theme.Green500
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,51 +41,30 @@ class MainActivity : ComponentActivity() {
 private fun AppJam23App() {
     val bottomNavController = rememberNavController()
 
-    Box(
+    Scaffold(
         modifier = Modifier.fillMaxSize(),
-    ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            BottomNavBar(navController = bottomNavController)
+        },
+        containerColor = Color.Transparent,
+    ) { padValues ->
+        NavHost(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padValues),
+            navController = bottomNavController,
+            startDestination = MainSections.CALENDAR.route,
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.4f)
-                    .clip(
-                        RoundedCornerShape(
-                            bottomStart = 30.dp,
-                            bottomEnd = 30.dp,
-                        ),
-                    )
-                    .background(Green500),
-            )
-            Scaffold(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(0.6f),
-                bottomBar = {
-                    BottomNavBar(navController = bottomNavController)
-                },
-            ) { padValues ->
-                NavHost(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(padValues),
-                    navController = bottomNavController,
-                    startDestination = MainSections.CALENDAR.route,
-                ) {
-                    composable(MainSections.CALENDAR.route) {
-                        Calendar()
-                    }
+            composable(MainSections.CALENDAR.route) {
+                Calendar()
+            }
 
-                    composable(MainSections.HOME.route) {
+            composable(MainSections.HOME.route) {
 
-                    }
+            }
 
-                    composable(MainSections.MY_APPJAM.route) {
+            composable(MainSections.MY_APPJAM.route) {
 
-                    }
-                }
             }
         }
     }
