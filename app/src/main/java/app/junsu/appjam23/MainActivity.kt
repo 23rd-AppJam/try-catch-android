@@ -4,12 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,6 +44,8 @@ import app.junsu.appjam23.ui.BottomNavBar
 import app.junsu.appjam23.ui.theme.Appjam23Theme
 import app.junsu.appjam23.ui.theme.Gray200
 import app.junsu.appjam23.ui.theme.Gray800
+import app.junsu.appjam23.ui.theme.Green50
+import app.junsu.appjam23.ui.theme.Red50
 import app.junsu.appjam23.util.navigateTo
 
 class MainActivity : ComponentActivity() {
@@ -85,9 +94,33 @@ private fun AppJam23App() {
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                 )
-                Row {
-
+                Spacer(modifier = Modifier.height(20.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
+                ) {
+                    OptionButton(
+                        modifier = Modifier.weight(
+                            weight = 1f,
+                        ),
+                        onClick = { /*TODO*/ },
+                        iconRes = R.drawable.ic_edit,
+                        text = "수정하기",
+                        backgroundColor = Green50,
+                    )
+                    Spacer(modifier = Modifier.width(16.dp))
+                    OptionButton(
+                        modifier = Modifier.weight(
+                            weight = 1f,
+                        ),
+                        onClick = { /*TODO*/ },
+                        iconRes = R.drawable.ic_delete,
+                        text = "삭제하기",
+                        backgroundColor = Red50,
+                    )
                 }
+                Spacer(modifier = Modifier.systemBarsPadding())
             }
         }
     }
@@ -147,12 +180,18 @@ private fun OptionButton(
     onClick: () -> Unit,
     @DrawableRes iconRes: Int,
     text: String,
+    backgroundColor: Color,
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier
+            .clip(RoundedCornerShape(8.dp))
+            .background(backgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
+        Spacer(
+            modifier = Modifier.height(10.dp),
+        )
         Icon(
             painter = painterResource(id = iconRes),
             contentDescription = null,
@@ -162,6 +201,9 @@ private fun OptionButton(
             text = text,
             color = Gray800,
             style = MaterialTheme.typography.bodyMedium,
+        )
+        Spacer(
+            modifier = Modifier.height(10.dp),
         )
     }
 }
