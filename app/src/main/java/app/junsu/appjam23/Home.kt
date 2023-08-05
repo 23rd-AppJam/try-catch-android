@@ -1,7 +1,7 @@
 package app.junsu.appjam23
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -47,17 +47,17 @@ fun Home(
                 .verticalScroll(rememberScrollState())
                 .padding(padValues),
         ) {
-            Column(
+            Box(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy((-8).dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                contentAlignment = Alignment.BottomCenter,
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.vector_seed),
+                    painter = painterResource(id = R.drawable.vector_earth),
                     contentDescription = null,
                 )
                 Image(
-                    painter = painterResource(id = R.drawable.vector_earth),
+                    modifier = Modifier.padding(bottom = 10.dp),
+                    painter = painterResource(id = R.drawable.vector_seed),
                     contentDescription = null,
                 )
             }
