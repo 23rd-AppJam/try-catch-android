@@ -69,7 +69,7 @@ fun HomeTopBar(
         actions = {
             Spacer(modifier = Modifier.width(8.dp))
             Icon(
-                painter = painterResource(R.drawable.ic_home_default),
+                painter = painterResource(R.drawable.ic_notification),
                 contentDescription = null,
             )
             Spacer(modifier = Modifier.width(8.dp))
