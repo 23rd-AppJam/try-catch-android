@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import app.junsu.appjam23.R
+import app.junsu.appjam23.ui.theme.Gray500
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -69,8 +70,10 @@ fun HomeTopBar(
         actions = {
             Spacer(modifier = Modifier.width(8.dp))
             Icon(
+                modifier = Modifier.size(24.dp),
                 painter = painterResource(R.drawable.ic_notification),
                 contentDescription = null,
+                tint = Gray500,
             )
             Spacer(modifier = Modifier.width(8.dp))
         }
