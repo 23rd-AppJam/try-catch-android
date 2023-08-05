@@ -5,7 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -35,24 +37,45 @@ fun Calendar(
 ) {
     var shouldShowBottomSheet by remember { mutableStateOf(false) }
     val (title, onTitleTextChanged) = remember { mutableStateOf("") }
+    val (content, onContentChanged) = remember { mutableStateOf("") }
+
 
     if (shouldShowBottomSheet) {
         ModalBottomSheet(
             onDismissRequest = { shouldShowBottomSheet = false },
         ) {
-            Text(
-                text = "일기 작성",
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
-            )
-            Spacer(modifier = Modifier.padding(20.dp))
-            TextField(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                value = title,
-                onValueChange = onTitleTextChanged,
-            )
+            Column(
+                modifier = Modifier.systemBarsPadding(),
+            ) {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
+                    text = "일기 작성",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                )
+                Spacer(modifier = Modifier.padding(20.dp))
+                TextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
+                    value = title,
+                    onValueChange = onTitleTextChanged,
+                    placeholder = { Text(text = "제목") }
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                TextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp)
+                        .padding(horizontal = 20.dp),
+                    value = content,
+                    onValueChange = onContentChanged,
+                    placeholder = { Text(text = "내용을 입력하세요") }
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            }
         }
     }
 
