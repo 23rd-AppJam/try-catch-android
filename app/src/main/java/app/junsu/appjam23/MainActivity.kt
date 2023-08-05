@@ -7,10 +7,15 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
@@ -42,9 +47,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 private fun AppJam23App() {
     val bottomNavController = rememberNavController()
+    var modalBottomSheet by remember { mutableStateOf(false) }
+    var selectedTodoTitle by remember { mutableStateOf("") }
+    val onShowModal = { title: String ->
+        selectedTodoTitle = title
+        modalBottomSheet = true
+    }
 
     LaunchedEffect(Unit) {
         bottomNavController.navigateTo(MainSections.HOME.route)
+    }
+
+    if (modalBottomSheet) {
+        ModalBottomSheet(
+            onDismissRequest = { modalBottomSheet = false },
+        ) {
+
+        }
     }
 
     Scaffold(
@@ -66,7 +85,9 @@ private fun AppJam23App() {
             }
 
             composable(MainSections.HOME.route) {
-                Home()
+                Home(
+                    onTodoDetailClick = onShowModal,
+                )
             }
 
             composable(MainSections.MY_APPJAM.route) {

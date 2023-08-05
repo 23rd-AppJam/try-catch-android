@@ -32,6 +32,7 @@ import app.junsu.appjam23.ui.theme.Green500
 @Composable
 fun TodoList(
     modifier: Modifier = Modifier,
+    onTodoDetailClick: (String) -> Unit,
 ) {
     Column(
         modifier = modifier
@@ -50,14 +51,17 @@ fun TodoList(
         TodoItem(
             modifier = Modifier.fillMaxWidth(),
             title = "식물에 물 주기",
+            onMoreIconClick = onTodoDetailClick,
         )
         TodoItem(
             modifier = Modifier.fillMaxWidth(),
             title = "걷기",
+            onMoreIconClick = onTodoDetailClick,
         )
         TodoItem(
             modifier = Modifier.fillMaxWidth(),
             title = "식물에 물 주기",
+            onMoreIconClick = onTodoDetailClick,
         )
     }
 }
@@ -66,6 +70,7 @@ fun TodoList(
 private fun TodoItem(
     modifier: Modifier = Modifier,
     title: String,
+    onMoreIconClick: (String) -> Unit,
 ) {
     var checked by remember { mutableStateOf(false) }
 
@@ -93,7 +98,9 @@ private fun TodoItem(
             style = MaterialTheme.typography.bodyLarge,
         )
         Icon(
-            modifier = Modifier.size(24.dp),
+            modifier = Modifier
+                .size(24.dp)
+                .clickable { onMoreIconClick(title) },
             painter = painterResource(id = R.drawable.ic_more),
             contentDescription = "more",
             tint = Gray500,
@@ -106,5 +113,6 @@ private fun TodoItem(
 private fun TodoListPreview() {
     TodoList(
         modifier = Modifier.padding(horizontal = 16.dp),
+        onTodoDetailClick = {},
     )
 }

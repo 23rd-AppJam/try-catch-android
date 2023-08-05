@@ -31,6 +31,7 @@ import app.junsu.appjam23.ui.theme.Gray500
 @Composable
 fun Home(
     modifier: Modifier = Modifier,
+    onTodoDetailClick : (String) -> Unit,
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -77,7 +78,8 @@ fun Home(
                         start = 20.dp,
                         end = 20.dp,
                         top = 20.dp,
-                    )
+                    ),
+                onTodoDetailClick = onTodoDetailClick,
             )
             Spacer(modifier = Modifier.height(20.dp))
         }
