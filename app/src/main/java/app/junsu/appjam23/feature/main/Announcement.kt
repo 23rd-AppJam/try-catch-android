@@ -18,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -102,6 +103,7 @@ fun AnnouncementTopBar(
             Text(
                 text = "안내 문자",
                 style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
             )
         },
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -123,7 +125,7 @@ fun AnnouncementTabRow(
         modifier = modifier.fillMaxWidth(),
         selectedTabIndex = tabIndex,
     ) {
-        AnnouncementSections.values().forEachIndexed() { index, section ->
+        AnnouncementSections.values().forEachIndexed { index, section ->
             val selected = section.route == currentRoute
             Tab(
                 selected = selected,
