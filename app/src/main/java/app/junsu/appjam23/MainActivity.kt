@@ -103,15 +103,21 @@ fun TryCatchApp() {
             }
             composable(MainSections.ANNOUNCEMENT.route) {
                 Announcement(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxSize(),
                     navController = navController,
                 )
             }
             composable(MainSections.NEARBY.route) {
-                Nearby()
+                Nearby(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = navController,
+                )
             }
             composable(MainSections.ALL.route) {
-                All()
+                All(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = navController,
+                )
             }
         }
     }

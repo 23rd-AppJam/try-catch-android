@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun Nearby(
     modifier: Modifier = Modifier,
+    navController: NavHostController,
 ) {
     val tabNavController = rememberNavController()
 
