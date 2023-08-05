@@ -151,7 +151,7 @@ private fun AppJam23App() {
             }
 
             composable(MainSections.MY_APPJAM.route) {
-
+                MyAppJam()
             }
         }
     }
