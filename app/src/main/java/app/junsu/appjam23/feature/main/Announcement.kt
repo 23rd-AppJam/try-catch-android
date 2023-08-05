@@ -13,9 +13,18 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,6 +32,8 @@ fun Announcement(
     modifier: Modifier = Modifier,
     navController: NavHostController,
 ) {
+    val tabNavController = rememberNavController()
+
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -36,9 +47,48 @@ fun Announcement(
                 .fillMaxSize()
                 .padding(paddingValues),
         ) {
-            AnnouncementTabRow()
+            AnnouncementTabRow(
+                navController = tabNavController,
+            )
+            NavHost(
+                navController = tabNavController,
+                startDestination = AnnouncementSections.ALL.route,
+            ) {
+                composable(AnnouncementSections.ALL.route) {
+
+                }
+                composable(AnnouncementSections.NaturalDisaster.route) {
+
+                }
+                composable(AnnouncementSections.SocialDisaster.route) {
+
+                }
+                composable(AnnouncementSections.EmergencyDisaster.route) {
+
+                }
+            }
         }
     }
+}
+
+enum class AnnouncementSections(
+    val route: String,
+) {
+    ALL(
+        route = "all",
+    ),
+
+    NaturalDisaster(
+        route = "naturalDisaster",
+    ),
+
+    SocialDisaster(
+        route = "socialDisaster",
+    ),
+
+    EmergencyDisaster(
+        route = "emergencyDisaster",
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,53 +113,49 @@ fun AnnouncementTopBar(
 @Composable
 fun AnnouncementTabRow(
     modifier: Modifier = Modifier,
+    navController: NavHostController,
 ) {
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = backStackEntry?.destination?.route
+    var tabIndex by remember { mutableStateOf(0) }
+
     TabRow(
         modifier = modifier.fillMaxWidth(),
-        selectedTabIndex = 0,
+        selectedTabIndex = tabIndex,
     ) {
-        Tab(
-            selected = true,
-            onClick = { /*TODO*/ },
-        ) {
-            Text(
-                modifier = Modifier.padding(vertical = 12.dp),
-                text = "전체",
-                style = MaterialTheme.typography.bodyMedium,
-            )
+        AnnouncementSections.values().forEachIndexed() { index, section ->
+            val selected = section.route == currentRoute
+            Tab(
+                selected = selected,
+                onClick = {
+                    navController.navigateTo(section.route)
+                    tabIndex = index
+                },
+            ) {
+                Text(
+                    modifier = Modifier.padding(vertical = 12.dp),
+                    text = when (section) {
+                        AnnouncementSections.ALL -> "전체"
+                        AnnouncementSections.NaturalDisaster -> "자연재난"
+                        AnnouncementSections.SocialDisaster -> "사회재난"
+                        AnnouncementSections.EmergencyDisaster -> "긴급재난"
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+            }
+        }
+    }
+}
+
+fun NavHostController.navigateTo(
+    route: String,
+) {
+    this.navigate(route) {
+        popUpTo(this@navigateTo.graph.findStartDestination().id) {
+            saveState = true
         }
 
-        Tab(
-            selected = true,
-            onClick = { /*TODO*/ },
-        ) {
-            Text(
-                modifier = Modifier.padding(vertical = 12.dp),
-                text = "자연재난",
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
-
-        Tab(
-            selected = true,
-            onClick = { /*TODO*/ },
-        ) {
-            Text(
-                modifier = Modifier.padding(vertical = 12.dp),
-                text = "사회재난",
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
-
-        Tab(
-            selected = true,
-            onClick = { /*TODO*/ },
-        ) {
-            Text(
-                modifier = Modifier.padding(vertical = 12.dp),
-                text = "비상재난",
-                style = MaterialTheme.typography.bodyMedium,
-            )
-        }
+        launchSingleTop = true
+        restoreState = true
     }
 }
