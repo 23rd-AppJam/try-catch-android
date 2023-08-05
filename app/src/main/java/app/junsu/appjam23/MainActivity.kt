@@ -90,7 +90,7 @@ private fun AppJam23App() {
             ) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "식물에 물 주기",
+                    text = selectedTodoTitle,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
