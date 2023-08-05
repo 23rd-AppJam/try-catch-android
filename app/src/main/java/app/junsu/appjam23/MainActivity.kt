@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import app.junsu.appjam23.ui.TodoList
 import app.junsu.appjam23.ui.WeekCalendar
 import app.junsu.appjam23.ui.theme.Appjam23Theme
 import app.junsu.appjam23.ui.theme.Gray200
@@ -66,9 +67,19 @@ private fun AppJam23App() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(
-                            horizontal = 20.dp,
-                            vertical = 25.dp,
+                            start = 20.dp,
+                            end = 20.dp,
+                            top = 25.dp,
                         ),
+                )
+                TodoList(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            start = 20.dp,
+                            end = 20.dp,
+                            top = 20.dp,
+                        )
                 )
             }
         }
