@@ -21,7 +21,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import app.junsu.appjam23.ui.theme.Blue500
 
 @Composable
 fun HumanInformationItem(
@@ -63,7 +62,7 @@ fun HumanInformationItem(
                         text = information.name,
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        color = Blue500,
+                        color = MaterialTheme.colorScheme.primary,
                     )
                     Spacer(
                         modifier = Modifier.width(2.dp),

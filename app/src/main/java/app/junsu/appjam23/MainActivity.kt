@@ -36,8 +36,6 @@ import app.junsu.appjam23.feature.main.All
 import app.junsu.appjam23.feature.main.Announcement
 import app.junsu.appjam23.feature.main.Home
 import app.junsu.appjam23.feature.main.Nearby
-import app.junsu.appjam23.ui.theme.Blue500
-import app.junsu.appjam23.ui.theme.Gray500
 import app.junsu.appjam23.ui.theme._23rdAppJamTheme
 import app.junsu.appjam23.util.sendNotification
 import kotlinx.coroutines.CoroutineScope
@@ -146,9 +144,9 @@ fun TryCatchBottomBar(
         MainSections.values().forEach { section ->
             val selected = section.route == selectedBottomBarItem
             val selectedColor = if (selected) {
-                Blue500
+                MaterialTheme.colorScheme.primary
             } else {
-                Gray500
+                MaterialTheme.colorScheme.outline
             }
 
             NavigationBarItem(
